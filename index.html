@@ -1,0 +1,2542 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profile lớp 8/3</title>
+<meta name="description" content="Trang profile của tập thể lớp 8/3">
+
+<style>
+:root{
+  --bg:#f4f6ff;
+  --card:rgba(255,255,255,.84);
+  --text:#171c35;
+  --muted:#68718a;
+  --primary:#5b5cf0;
+  --secondary:#916cff;
+  --accent:#22c995;
+  --shadow:0 20px 60px rgba(48,55,120,.13);
+  --radius:24px
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0
+}
+
+html{
+  scroll-behavior:smooth
+}
+
+body{
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,
+  "Segoe UI",Roboto,Arial,sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(circle at 8% 8%,rgba(145,108,255,.18),transparent 27%),
+    radial-gradient(circle at 92% 20%,rgba(34,201,149,.13),transparent 25%),
+    linear-gradient(180deg,#fafbff 0%,#eef2ff 100%);
+  min-height:100vh;
+  overflow-x:hidden
+}
+
+.blob{
+  position:fixed;
+  z-index:-1;
+  border-radius:50%;
+  filter:blur(60px);
+  opacity:.42
+}
+
+.b1{
+  width:240px;
+  height:240px;
+  background:#8377ff;
+  left:-90px;
+  top:130px
+}
+
+.b2{
+  width:220px;
+  height:220px;
+  background:#65e6c6;
+  right:-70px;
+  top:58%
+}
+
+nav{
+  position:sticky;
+  top:0;
+  z-index:20;
+  backdrop-filter:blur(18px);
+  background:rgba(250,251,255,.72);
+  border-bottom:1px solid rgba(255,255,255,.8)
+}
+
+.nav-inner{
+  max-width:1120px;
+  margin:auto;
+  padding:15px 22px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px
+}
+
+.brand{
+  font-weight:900;
+  letter-spacing:-.03em
+}
+
+.brand span{
+  color:var(--primary)
+}
+
+.nav-links{
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap
+}
+
+.nav-links a{
+  text-decoration:none;
+  color:var(--muted);
+  font-weight:750;
+  padding:9px 13px;
+  border-radius:12px;
+  transition:.2s
+}
+
+.nav-links a:hover{
+  background:#fff;
+  color:var(--primary)
+}
+
+.container{
+  max-width:1120px;
+  margin:auto;
+  padding:0 22px
+}
+
+.hero{
+  min-height:78vh;
+  display:grid;
+  place-items:center;
+  padding:65px 0 40px
+}
+
+.hero-card{
+  width:100%;
+  position:relative;
+  overflow:hidden;
+  padding:54px 42px;
+  border-radius:34px;
+  background:linear-gradient(
+    135deg,
+    rgba(255,255,255,.93),
+    rgba(255,255,255,.68)
+  );
+  border:1px solid rgba(255,255,255,.95);
+  box-shadow:var(--shadow)
+}
+
+.hero-card:before{
+  content:"";
+  position:absolute;
+  width:340px;
+  height:340px;
+  border-radius:50%;
+  right:-120px;
+  top:-145px;
+  background:linear-gradient(
+    135deg,
+    rgba(91,92,240,.2),
+    rgba(145,108,255,0)
+  )
+}
+
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:40px;
+  align-items:center
+}
+
+.kicker{
+  display:inline-flex;
+  gap:8px;
+  align-items:center;
+  padding:8px 13px;
+  border-radius:999px;
+  background:#fff;
+  color:var(--primary);
+  font-weight:850;
+  box-shadow:0 8px 25px rgba(60,60,120,.07)
+}
+
+h1{
+  font-size:clamp(52px,8vw,90px);
+  line-height:.9;
+  letter-spacing:-.065em;
+  margin:18px 0
+}
+
+.gradient-text{
+  background:linear-gradient(
+    100deg,
+    var(--primary),
+    var(--secondary),
+    #12b995
+  );
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent
+}
+
+.subtitle{
+  font-size:18px;
+  line-height:1.72;
+  color:var(--muted);
+  max-width:680px
+}
+
+.buttons{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:28px
+}
+
+.btn{
+  border:0;
+  text-decoration:none;
+  cursor:pointer;
+  padding:13px 18px;
+  border-radius:14px;
+  font-weight:850;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  transition:.2s
+}
+
+.btn-primary{
+  background:var(--primary);
+  color:#fff;
+  box-shadow:0 12px 25px rgba(91,92,240,.27)
+}
+
+.btn-secondary{
+  background:#fff;
+  color:var(--text);
+  box-shadow:0 8px 20px rgba(50,60,120,.08)
+}
+
+.btn:hover{
+  transform:translateY(-2px)
+}
+
+.class-orb{
+  min-height:330px;
+  display:grid;
+  place-items:center;
+  position:relative
+}
+
+.orb{
+  width:260px;
+  height:260px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  color:#fff;
+  background:linear-gradient(
+    145deg,
+    #5b5cf0,
+    #956dff 55%,
+    #23cca0
+  );
+  box-shadow:
+    0 30px 70px rgba(91,92,240,.3),
+    inset 0 2px 0 rgba(255,255,255,.45);
+  position:relative
+}
+
+.orb:before{
+  content:"";
+  position:absolute;
+  inset:15px;
+  border:1px solid rgba(255,255,255,.3);
+  border-radius:50%
+}
+
+.orb strong{
+  font-size:78px;
+  line-height:.8;
+  letter-spacing:-.08em
+}
+
+.orb small{
+  display:block;
+  font-size:20px;
+  font-weight:800;
+  margin-top:12px;
+  opacity:.93
+}
+
+.float-tag{
+  position:absolute;
+  background:#fff;
+  padding:11px 14px;
+  border-radius:15px;
+  font-weight:800;
+  box-shadow:var(--shadow)
+}
+
+.t1{
+  top:22px;
+  right:15px
+}
+
+.t2{
+  bottom:28px;
+  left:5px
+}
+
+.t3{
+  top:78px;
+  left:15px
+}
+
+section{
+  padding:72px 0
+}
+
+.section-head{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:20px;
+  margin-bottom:25px
+}
+
+.section-head h2{
+  font-size:36px;
+  letter-spacing:-.04em
+}
+
+.section-head p{
+  color:var(--muted);
+  line-height:1.6;
+  max-width:620px
+}
+
+.grid-4{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px
+}
+
+.stat,.card{
+  background:var(--card);
+  border:1px solid rgba(255,255,255,.9);
+  box-shadow:var(--shadow);
+  border-radius:var(--radius)
+}
+
+.stat{
+  padding:23px
+}
+
+.stat .num{
+  font-size:34px;
+  font-weight:950;
+  letter-spacing:-.05em;
+  color:var(--primary)
+}
+
+.stat .label{
+  color:var(--muted);
+  margin-top:5px
+}
+
+.about{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px
+}
+
+.card{
+  padding:28px
+}
+
+.card h3{
+  font-size:21px;
+  margin-bottom:10px
+}
+
+.card p{
+  color:var(--muted);
+  line-height:1.75
+}
+
+.pills{
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+  margin-top:17px
+}
+
+.pill{
+  padding:8px 12px;
+  border-radius:999px;
+  background:#eef0ff;
+  color:#4b4dcc;
+  font-weight:750;
+  font-size:14px
+}
+
+.members{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:17px
+}
+
+.member{
+  padding:22px;
+  background:var(--card);
+  border:1px solid rgba(255,255,255,.9);
+  border-radius:22px;
+  box-shadow:var(--shadow);
+  display:flex;
+  gap:15px;
+  align-items:center
+}
+
+.avatar{
+  width:62px;
+  height:62px;
+  flex:0 0 62px;
+  border-radius:19px;
+  display:grid;
+  place-items:center;
+  color:#fff;
+  font-size:22px;
+  font-weight:900;
+  background:linear-gradient(
+    135deg,
+    var(--primary),
+    var(--secondary)
+  )
+}
+
+.member h3{
+  font-size:17px
+}
+
+.member p{
+  font-size:14px;
+  color:var(--muted);
+  margin-top:4px
+}
+
+.timeline{
+  display:grid;
+  gap:14px
+}
+
+.event{
+  display:grid;
+  grid-template-columns:110px 1fr;
+  gap:17px;
+  align-items:stretch
+}
+
+.date{
+  border-radius:18px;
+  background:#fff;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  box-shadow:0 10px 30px rgba(45,52,110,.07);
+  font-weight:900;
+  color:var(--primary);
+  padding:16px
+}
+
+.event-content{
+  padding:20px 22px;
+  background:var(--card);
+  border:1px solid rgba(255,255,255,.9);
+  border-radius:18px;
+  box-shadow:var(--shadow)
+}
+
+.event-content strong{
+  display:block;
+  margin-bottom:6px
+}
+
+.event-content span{
+  color:var(--muted);
+  line-height:1.6
+}
+
+.gallery{
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr;
+  gap:14px
+}
+
+.photo{
+  min-height:180px;
+  border-radius:22px;
+  display:flex;
+  align-items:end;
+  padding:20px;
+  color:#fff;
+  position:relative;
+  overflow:hidden;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(91,92,240,.92),
+      rgba(145,108,255,.82)
+    ),
+    repeating-linear-gradient(
+      45deg,
+      rgba(255,255,255,.12) 0 12px,
+      transparent 12px 24px
+    );
+  box-shadow:var(--shadow)
+}
+
+.photo:nth-child(2){
+  background:linear-gradient(145deg,#23bd93,#6adfbe)
+}
+
+.photo:nth-child(3){
+  background:linear-gradient(145deg,#ff8a69,#ffb36d)
+}
+
+.photo:nth-child(4){
+  background:linear-gradient(145deg,#5866d8,#8c7fff)
+}
+
+.photo:nth-child(5){
+  background:linear-gradient(145deg,#5ca5f5,#62d7e9)
+}
+
+.photo.big{
+  min-height:375px;
+  grid-row:span 2
+}
+
+.photo div{
+  position:relative;
+  z-index:2
+}
+
+.photo small{
+  display:block;
+  opacity:.82;
+  margin-top:4px
+}
+
+footer{
+  padding:28px 0 50px;
+  text-align:center;
+  color:var(--muted)
+}
+
+footer strong{
+  color:var(--text)
+}
+
+@media(max-width:850px){
+  .hero-grid,.about{
+    grid-template-columns:1fr
+  }
+
+  .grid-4{
+    grid-template-columns:repeat(2,1fr)
+  }
+
+  .members{
+    grid-template-columns:1fr 1fr
+  }
+
+  .hero-card{
+    padding:38px 25px
+  }
+
+  .class-orb{
+    min-height:280px
+  }
+}
+
+@media(max-width:590px){
+  .nav-inner{
+    align-items:flex-start;
+    flex-direction:column
+  }
+
+  .nav-links{
+    width:100%;
+    overflow:auto;
+    flex-wrap:nowrap
+  }
+
+  .nav-links a{
+    white-space:nowrap
+  }
+
+  .grid-4,.members,.gallery{
+    grid-template-columns:1fr
+  }
+
+  .photo.big{
+    min-height:240px;
+    grid-row:auto
+  }
+
+  .event{
+    grid-template-columns:1fr
+  }
+
+  h1{
+    font-size:60px
+  }
+
+  .section-head{
+    display:block
+  }
+
+  .section-head h2{
+    margin-bottom:8px
+  }
+}
+
+/* Interactive editor */
+
+.editor-bar{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  align-items:center;
+  margin-bottom:18px;
+  padding:16px;
+  border-radius:18px;
+  background:rgba(255,255,255,.72);
+  border:1px solid rgba(255,255,255,.95);
+  box-shadow:0 10px 30px rgba(45,52,110,.07)
+}
+
+.editor-bar p{
+  color:var(--muted);
+  font-size:14px;
+  flex:1;
+  min-width:220px
+}
+
+.action-btn{
+  border:0;
+  border-radius:12px;
+  padding:11px 15px;
+  font-weight:850;
+  cursor:pointer;
+  background:var(--primary);
+  color:#fff;
+  transition:.2s
+}
+
+.action-btn:hover{
+  transform:translateY(-2px)
+}
+
+.action-btn.secondary{
+  background:#fff;
+  color:var(--text)
+}
+
+.hidden-file{
+  display:none
+}
+
+.photo{
+  min-height:180px;
+  cursor:pointer;
+  background-size:cover!important;
+  background-position:center!important
+}
+
+.photo.has-image:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    180deg,
+    transparent 35%,
+    rgba(0,0,0,.72)
+  );
+  z-index:1
+}
+
+.photo .remove-photo{
+  display:none;
+  position:absolute;
+  right:10px;
+  top:10px;
+  z-index:5;
+  width:34px;
+  height:34px;
+  border:0;
+  border-radius:50%;
+  background:rgba(0,0,0,.55);
+  color:#fff;
+  font-size:18px;
+  cursor:pointer
+}
+
+.photo.has-image .remove-photo{
+  display:block
+}
+
+.photo .placeholder-icon{
+  font-size:34px;
+  margin-bottom:9px
+}
+
+.event-actions{
+  display:flex;
+  gap:8px;
+  margin-top:12px
+}
+
+.event-actions button{
+  border:0;
+  background:#eef0ff;
+  color:#4b4dcc;
+  padding:7px 10px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:750
+}
+
+.event-actions button.delete{
+  color:#c33d57;
+  background:#fff0f3
+}
+
+.empty-state{
+  text-align:center;
+  padding:35px;
+  color:var(--muted);
+  background:rgba(255,255,255,.55);
+  border:1px dashed #cbd0ed;
+  border-radius:18px
+}
+
+.modal{
+  position:fixed;
+  inset:0;
+  z-index:100;
+  display:none;
+  place-items:center;
+  padding:20px;
+  background:rgba(16,18,35,.55);
+  backdrop-filter:blur(7px)
+}
+
+.modal.open{
+  display:grid
+}
+
+.modal-box{
+  width:min(560px,100%);
+  background:#fff;
+  border-radius:25px;
+  padding:25px;
+  box-shadow:0 30px 90px rgba(0,0,0,.25)
+}
+
+.modal-box h3{
+  font-size:25px;
+  margin-bottom:16px
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns:130px 1fr;
+  gap:11px;
+  align-items:center
+}
+
+.form-grid label{
+  font-weight:800
+}
+
+.form-grid input,
+.form-grid textarea{
+  width:100%;
+  border:1px solid #dfe2f1;
+  border-radius:12px;
+  padding:11px 12px;
+  font:inherit;
+  outline:none;
+  background:#fafbff
+}
+
+.form-grid textarea{
+  min-height:100px;
+  resize:vertical
+}
+
+.modal-actions{
+  display:flex;
+  justify-content:flex-end;
+  gap:9px;
+  margin-top:18px
+}
+
+@media(max-width:590px){
+  .form-grid{
+    grid-template-columns:1fr
+  }
+
+  .modal-box{
+    padding:20px
+  }
+}
+
+/* ===== Thành viên tương tác ===== */
+
+.member-wrap{
+  margin-top:18px
+}
+
+.member-actions{
+  display:flex;
+  gap:8px;
+  margin-left:auto
+}
+
+.member-actions button{
+  border:0;
+  border-radius:10px;
+  padding:7px 10px;
+  cursor:pointer;
+  font-weight:800
+}
+
+.member-actions .edit{
+  background:#eef0ff;
+  color:#4b4dcc
+}
+
+.member-actions .delete{
+  background:#fff0f3;
+  color:#c33d57
+}
+
+.member{
+  position:relative
+}
+
+.member > div:nth-child(2){
+  min-width:0
+}
+
+.member h3,
+.member p{
+  overflow-wrap:anywhere
+}
+
+/* ===== Ponadira AI ===== */
+
+.ai-fab{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  z-index:80;
+  width:62px;
+  height:62px;
+  border:0;
+  border-radius:50%;
+  cursor:pointer;
+  color:#fff;
+  font-size:27px;
+  background:linear-gradient(
+    145deg,
+    #5b5cf0,
+    #956dff 55%,
+    #23cca0
+  );
+  box-shadow:0 16px 35px rgba(91,92,240,.35);
+  transition:.2s
+}
+
+.ai-fab:hover{
+  transform:translateY(-3px) scale(1.03)
+}
+
+.ai-panel{
+  position:fixed;
+  right:20px;
+  bottom:94px;
+  z-index:80;
+  width:min(390px,calc(100vw - 28px));
+  height:min(600px,calc(100vh - 125px));
+  display:none;
+  flex-direction:column;
+  overflow:hidden;
+  background:rgba(255,255,255,.96);
+  border:1px solid rgba(255,255,255,.9);
+  border-radius:24px;
+  box-shadow:0 25px 80px rgba(25,30,70,.25);
+  backdrop-filter:blur(20px)
+}
+
+.ai-panel.open{
+  display:flex
+}
+
+.ai-head{
+  padding:16px 17px;
+  display:flex;
+  align-items:center;
+  gap:11px;
+  color:#fff;
+  background:linear-gradient(135deg,#5b5cf0,#916cff)
+}
+
+.ai-logo{
+  width:42px;
+  height:42px;
+  display:grid;
+  place-items:center;
+  border-radius:14px;
+  background:rgba(255,255,255,.18);
+  font-size:22px
+}
+
+.ai-head strong{
+  font-size:17px
+}
+
+.ai-head small{
+  display:block;
+  opacity:.8;
+  margin-top:2px
+}
+
+.ai-close{
+  margin-left:auto;
+  border:0;
+  background:rgba(255,255,255,.15);
+  color:#fff;
+  border-radius:10px;
+  width:34px;
+  height:34px;
+  cursor:pointer;
+  font-size:19px
+}
+
+.ai-messages{
+  flex:1;
+  overflow:auto;
+  padding:15px;
+  background:linear-gradient(180deg,#f7f8ff,#eef2ff)
+}
+
+.ai-msg{
+  max-width:85%;
+  padding:10px 12px;
+  margin:0 0 10px;
+  border-radius:15px;
+  line-height:1.45;
+  font-size:14px;
+  white-space:pre-wrap
+}
+
+.ai-msg.bot{
+  background:#fff;
+  border:1px solid #e3e6f5;
+  border-top-left-radius:5px
+}
+
+.ai-msg.user{
+  margin-left:auto;
+  background:#5b5cf0;
+  color:#fff;
+  border-top-right-radius:5px
+}
+
+.ai-suggests{
+  display:flex;
+  gap:7px;
+  overflow:auto;
+  padding:8px 11px;
+  border-top:1px solid #e4e7f3;
+  background:#fff
+}
+
+.ai-suggest{
+  flex:0 0 auto;
+  border:1px solid #dfe2f1;
+  background:#f7f8ff;
+  color:#4b4dcc;
+  border-radius:999px;
+  padding:7px 10px;
+  cursor:pointer;
+  font-size:12px;
+  font-weight:750
+}
+
+.ai-form{
+  display:flex;
+  gap:8px;
+  padding:11px;
+  border-top:1px solid #e4e7f3;
+  background:#fff
+}
+
+.ai-input{
+  flex:1;
+  border:1px solid #dfe2f1;
+  border-radius:13px;
+  padding:11px 12px;
+  outline:none;
+  font:inherit
+}
+
+.ai-send{
+  border:0;
+  border-radius:13px;
+  padding:0 14px;
+  background:#5b5cf0;
+  color:#fff;
+  font-weight:850;
+  cursor:pointer
+}
+
+.ai-note{
+  padding:6px 12px 10px;
+  background:#fff;
+  color:#8a91a8;
+  font-size:10px;
+  text-align:center
+}
+
+.ai-typing{
+  opacity:.65;
+  font-style:italic
+}
+
+@media(max-width:590px){
+  .ai-fab{
+    right:14px;
+    bottom:14px
+  }
+
+  .ai-panel{
+    right:10px;
+    bottom:84px;
+    width:calc(100vw - 20px);
+    height:calc(100vh - 105px);
+    border-radius:20px
+  }
+
+  .member-actions{
+    margin-left:0
+  }
+
+  .member{
+    align-items:flex-start!important
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="blob b1"></div>
+<div class="blob b2"></div>
+
+<nav>
+  <div class="nav-inner">
+    <div class="brand">
+      PROFILE <span>8/3</span>
+    </div>
+
+    <div class="nav-links">
+      <a href="#gioi-thieu">Giới thiệu</a>
+      <a href="#thanh-vien">Thành viên</a>
+      <a href="#hoat-dong">Hoạt động</a>
+      <a href="#thu-vien">Thư viện</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-card">
+
+      <div class="hero-grid">
+
+        <div>
+          <span class="kicker">✨ TẬP THỂ LỚP</span>
+
+          <h1>
+            Lớp <span class="gradient-text">8/3</span>
+          </h1>
+
+          <p class="subtitle">
+            Nơi lưu giữ những khoảnh khắc, kỷ niệm và những câu chuyện đáng nhớ
+            của tập thể 8/3. Học hết mình, chơi hết sức, cùng nhau lớn lên!
+          </p>
+
+          <div class="buttons">
+            <a class="btn btn-primary" href="#gioi-thieu">
+              Khám phá lớp →
+            </a>
+
+            <a class="btn btn-secondary" href="#thu-vien">
+              Xem thư viện
+            </a>
+          </div>
+        </div>
+
+        <div class="class-orb">
+
+          <div class="float-tag t1">🔥 Đoàn kết</div>
+          <div class="float-tag t2">📚 Học tập</div>
+          <div class="float-tag t3">⚽ Năng động</div>
+
+          <div class="orb">
+            <div>
+              <strong>8/3</strong>
+              <small>ONE TEAM • ONE CLASS</small>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="gioi-thieu">
+
+  <div class="container">
+
+    <div class="section-head">
+      <div>
+        <h2>Về lớp 8/3</h2>
+
+        <p>
+          Một tập thể với nhiều cá tính khác nhau nhưng luôn biết cách tạo nên một đội.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid-4">
+
+      <div class="stat">
+        <div class="num">8/3</div>
+        <div class="label">Tên lớp</div>
+      </div>
+
+      <div class="stat">
+        <div class="num">2026</div>
+        <div class="label">Năm học</div>
+      </div>
+
+      <div class="stat">
+        <div class="num">∞</div>
+        <div class="label">Kỷ niệm</div>
+      </div>
+
+      <div class="stat">
+        <div class="num">1</div>
+        <div class="label">Tập thể</div>
+      </div>
+
+    </div>
+
+    <div class="about" style="margin-top:18px">
+
+      <div class="card">
+
+        <h3>🎯 Châm ngôn của lớp</h3>
+
+        <p>
+          “Không cần ai hoàn hảo. Chỉ cần cả lớp cùng cố gắng và không bỏ ai lại phía sau.”
+        </p>
+
+        <div class="pills">
+          <span class="pill">Đoàn kết</span>
+          <span class="pill">Tôn trọng</span>
+          <span class="pill">Tiến bộ</span>
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <h3>🚀 Điều lớp hướng tới</h3>
+
+        <p>
+          Cùng học tốt hơn, tham gia nhiều hoạt động hơn và tạo thật nhiều kỷ niệm đẹp trong những năm học.
+        </p>
+
+        <div class="pills">
+          <span class="pill">Học tập</span>
+          <span class="pill">Thể thao</span>
+          <span class="pill">Văn nghệ</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section id="thanh-vien">
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <div>
+
+        <h2>Nhóm lớp</h2>
+
+        <p>
+          Thay tên và vai trò bên dưới bằng thông tin thật của nhóm bạn.
+        </p>
+
+      </div>
+
+    </div>
+
+    <div class="editor-bar">
+
+      <p>
+        👥 Thêm, sửa hoặc xóa thành viên và chức vụ.
+        Dữ liệu được lưu trên thiết bị này.
+      </p>
+
+      <button class="action-btn" id="addMemberBtn">
+        ＋ Thêm thành viên
+      </button>
+
+    </div>
+
+    <div class="members" id="memberList"></div>
+
+  </div>
+
+</section>
+
+<section id="hoat-dong">
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <div>
+
+        <h2>Hoạt động & kỷ niệm</h2>
+
+        <p>
+          Một timeline mẫu để bạn ghi lại những ngày đáng nhớ của lớp.
+        </p>
+
+      </div>
+
+    </div>
+
+    <div class="editor-bar">
+
+      <p>
+        📅 Thêm, sửa hoặc xóa sự kiện.
+        Danh sách được lưu trên trình duyệt của thiết bị này.
+      </p>
+
+      <button class="action-btn" id="addEventBtn">
+        ＋ Thêm sự kiện
+      </button>
+
+    </div>
+
+    <div class="timeline" id="eventList"></div>
+
+  </div>
+
+</section>
+
+<section id="thu-vien">
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <div>
+
+        <h2>Thư viện 8/3</h2>
+
+        <p>
+          Các ô bên dưới có thể thay bằng ảnh thật của lớp.
+        </p>
+
+      </div>
+
+    </div>
+
+    <div class="editor-bar">
+
+      <p>
+        📸 Bấm nút để mở 
+        <!-- =========================
+     MODAL THÀNH VIÊN
+========================= -->
+<div class="modal" id="memberModal">
+  <div class="modal-box">
+    <h3 id="memberModalTitle">Thêm thành viên</h3>
+
+    <div class="form-grid">
+      <label for="memberName">Họ tên</label>
+      <input id="memberName" placeholder="Ví dụ: Nguyễn Văn A">
+
+      <label for="memberRole">Chức vụ</label>
+      <input id="memberRole" placeholder="Ví dụ: Lớp trưởng / Tổ trưởng / Thành viên">
+    </div>
+
+    <div class="modal-actions">
+      <button class="btn btn-secondary" id="cancelMemberBtn">Hủy</button>
+      <button class="btn btn-primary" id="saveMemberBtn">Lưu</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- =========================
+     PONADIRA AI
+========================= -->
+<button
+  class="ai-fab"
+  id="aiFab"
+  aria-label="Mở Ponadira AI">
+  🤖
+</button>
+
+<div class="ai-panel" id="aiPanel">
+
+  <div class="ai-head">
+    <div class="ai-logo">🤖</div>
+
+    <div>
+      <strong>Ponadira AI</strong>
+      <small>Trợ lý lớp 8/3</small>
+    </div>
+
+    <button
+      class="ai-close"
+      id="aiClose"
+      aria-label="Đóng">
+      ×
+    </button>
+  </div>
+
+  <div
+    class="ai-messages"
+    id="aiMessages">
+  </div>
+
+  <div class="ai-suggests">
+    <button class="ai-suggest">
+      Lớp mình có ai?
+    </button>
+
+    <button class="ai-suggest">
+      Có sự kiện gì?
+    </button>
+
+    <button class="ai-suggest">
+      Giới thiệu lớp
+    </button>
+  </div>
+
+  <form
+    class="ai-form"
+    id="aiForm">
+
+    <input
+      class="ai-input"
+      id="aiInput"
+      autocomplete="off"
+      placeholder="Hỏi Ponadira...">
+
+    <button
+      class="ai-send"
+      type="submit">
+      Gửi
+    </button>
+
+  </form>
+
+  <div class="ai-note">
+    Ponadira đang dùng dữ liệu lớp được lưu trên thiết bị này.
+  </div>
+
+</div>
+
+
+<!-- =========================
+     JAVASCRIPT
+     ĐỂ CUỐI CÙNG
+========================= -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  /* =========================
+     NĂM Ở FOOTER
+  ========================= */
+  const yearElement = document.getElementById("year");
+
+  if (yearElement) {
+    yearElement.textContent = new Date().getFullYear();
+  }
+
+
+  /* =========================
+     HÀM BẢO VỆ HTML
+  ========================= */
+  function escapeHtml(value) {
+    return String(value).replace(/[&<>"']/g, function (m) {
+      return {
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#039;"
+      }[m];
+    });
+  }
+
+
+  /* =====================================================
+     PHẦN 1 — SỰ KIỆN
+  ===================================================== */
+
+  const defaultEvents = [
+    {
+      id: 1,
+      month: "09",
+      year: "2026",
+      name: "Ngày hội bắt đầu năm học",
+      desc: "Cả lớp gặp lại nhau, đặt mục tiêu mới và khởi động một năm học thật đáng nhớ."
+    },
+    {
+      id: 2,
+      month: "10",
+      year: "2026",
+      name: "Hoạt động tập thể",
+      desc: "Thi đấu, trò chơi và những màn cổ vũ của lớp."
+    },
+    {
+      id: 3,
+      month: "11",
+      year: "2026",
+      name: "Văn nghệ & phong trào",
+      desc: "Cùng nhau lên ý tưởng, tập luyện và tạo dấu ấn riêng của 8/3."
+    }
+  ];
+
+  let events = [];
+
+  try {
+    const savedEvents =
+      JSON.parse(localStorage.getItem("lop83_events"));
+
+    events =
+      Array.isArray(savedEvents)
+        ? savedEvents
+        : defaultEvents;
+
+  } catch (error) {
+    events = defaultEvents;
+  }
+
+
+  const eventList =
+    document.getElementById("eventList");
+
+  const eventModal =
+    document.getElementById("eventModal");
+
+  const addEventBtn =
+    document.getElementById("addEventBtn");
+
+  const cancelEventBtn =
+    document.getElementById("cancelEventBtn");
+
+  const saveEventBtn =
+    document.getElementById("saveEventBtn");
+
+  let editingEventId = null;
+
+
+  function saveEvents() {
+    localStorage.setItem(
+      "lop83_events",
+      JSON.stringify(events)
+    );
+  }
+
+
+  function renderEvents() {
+
+    if (!eventList) return;
+
+    if (!events.length) {
+
+      eventList.innerHTML = `
+        <div class="empty-state">
+          Chưa có sự kiện nào.
+          Hãy bấm “＋ Thêm sự kiện”.
+        </div>
+      `;
+
+      return;
+    }
+
+
+    eventList.innerHTML = events.map(event => {
+
+      return `
+        <div class="event">
+
+          <div class="date">
+            ${escapeHtml(event.month)}
+            <br>
+            ${escapeHtml(event.year)}
+          </div>
+
+          <div class="event-content">
+
+            <strong>
+              ${escapeHtml(event.name)}
+            </strong>
+
+            <span>
+              ${escapeHtml(event.desc || "")}
+            </span>
+
+            <div class="event-actions">
+
+              <button
+                onclick="editEvent(${event.id})">
+                ✏️ Sửa
+              </button>
+
+              <button
+                class="delete"
+                onclick="deleteEvent(${event.id})">
+                🗑️ Xóa
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+      `;
+
+    }).join("");
+  }
+
+
+  function openEvent(id = null) {
+
+    editingEventId = id;
+
+    const event =
+      id !== null
+        ? events.find(e => e.id === id)
+        : null;
+
+
+    document.getElementById("modalTitle").textContent =
+      event
+        ? "Sửa sự kiện"
+        : "Thêm sự kiện";
+
+
+    document.getElementById("eventMonth").value =
+      event?.month || "";
+
+
+    document.getElementById("eventYear").value =
+      event?.year || new Date().getFullYear();
+
+
+    document.getElementById("eventName").value =
+      event?.name || "";
+
+
+    document.getElementById("eventDesc").value =
+      event?.desc || "";
+
+
+    eventModal.classList.add("open");
+    eventModal.setAttribute("aria-hidden", "false");
+  }
+
+
+  function closeEvent() {
+
+    eventModal.classList.remove("open");
+
+    eventModal.setAttribute("aria-hidden", "true");
+
+    editingEventId = null;
+  }
+
+
+  if (addEventBtn) {
+    addEventBtn.onclick = () => openEvent();
+  }
+
+
+  if (cancelEventBtn) {
+    cancelEventBtn.onclick = closeEvent;
+  }
+
+
+  if (eventModal) {
+
+    eventModal.onclick = function (e) {
+
+      if (e.target === eventModal) {
+        closeEvent();
+      }
+
+    };
+
+  }
+
+
+  if (saveEventBtn) {
+
+    saveEventBtn.onclick = function () {
+
+      const month =
+        document.getElementById("eventMonth")
+          .value.trim();
+
+      const year =
+        document.getElementById("eventYear")
+          .value.trim();
+
+      const name =
+        document.getElementById("eventName")
+          .value.trim();
+
+      const desc =
+        document.getElementById("eventDesc")
+          .value.trim();
+
+
+      if (!month || !year || !name) {
+
+        alert(
+          "Hãy nhập tháng, năm và tên sự kiện nhé."
+        );
+
+        return;
+      }
+
+
+      if (editingEventId !== null) {
+
+        const event =
+          events.find(
+            e => e.id === editingEventId
+          );
+
+        if (event) {
+
+          event.month = month;
+          event.year = year;
+          event.name = name;
+          event.desc = desc;
+
+        }
+
+      } else {
+
+        events.push({
+          id: Date.now(),
+          month: month,
+          year: year,
+          name: name,
+          desc: desc
+        });
+
+      }
+
+
+      saveEvents();
+      renderEvents();
+      closeEvent();
+    };
+
+  }
+
+
+  window.editEvent = function (id) {
+    openEvent(id);
+  };
+
+
+  window.deleteEvent = function (id) {
+
+    if (!confirm("Xóa sự kiện này?")) {
+      return;
+    }
+
+    events =
+      events.filter(
+        event => event.id !== id
+      );
+
+    saveEvents();
+    renderEvents();
+  };
+
+
+  renderEvents();
+
+
+  /* =====================================================
+     PHẦN 2 — THƯ VIỆN ẢNH
+  ===================================================== */
+
+  const photoPicker =
+    document.getElementById("photoPicker");
+
+  const photoGallery =
+    document.getElementById("photoGallery");
+
+  const clearPhotosBtn =
+    document.getElementById("clearPhotosBtn");
+
+
+  const photoTitles = [
+    ["📸", "Khoảnh khắc tập thể", "Ảnh lớp / ảnh dã ngoại"],
+    ["🏆", "Thành tích", "Thi đấu & cuộc thi"],
+    ["🎤", "Văn nghệ", "Biểu diễn của lớp"],
+    ["⚽", "Thể thao", "Những trận đấu đáng nhớ"],
+    ["😂", "Meme lớp", "Góc vui vẻ 8/3"]
+  ];
+
+
+  const PHOTO_DB = "lop83_photos";
+  const PHOTO_STORE = "photos";
+
+
+  function openPhotoDB() {
+
+    return new Promise((resolve, reject) => {
+
+      const request =
+        indexedDB.open(PHOTO_DB, 1);
+
+
+      request.onupgradeneeded = function () {
+
+        request.result.createObjectStore(
+          PHOTO_STORE,
+          {
+            keyPath: "id",
+            autoIncrement: true
+          }
+        );
+
+      };
+
+
+      request.onsuccess = function () {
+        resolve(request.result);
+      };
+
+
+      request.onerror = function () {
+        reject(request.error);
+      };
+
+    });
+
+  }
+
+
+  async function getPhotos() {
+
+    const db =
+      await openPhotoDB();
+
+
+    return new Promise((resolve, reject) => {
+
+      const request =
+        db
+          .transaction(PHOTO_STORE, "readonly")
+          .objectStore(PHOTO_STORE)
+          .getAll();
+
+
+      request.onsuccess = () => {
+        resolve(request.result);
+      };
+
+
+      request.onerror = () => {
+        reject(request.error);
+      };
+
+    });
+
+  }
+
+
+  async function addPhotos(files) {
+
+    const db =
+      await openPhotoDB();
+
+
+    for (const file of files) {
+
+      if (!file.type.startsWith("image/")) {
+        continue;
+      }
+
+
+      await new Promise((resolve, reject) => {
+
+        const reader =
+          new FileReader();
+
+
+        reader.onload = function () {
+
+          const transaction =
+            db.transaction(
+              PHOTO_STORE,
+              "readwrite"
+            );
+
+
+          transaction
+            .objectStore(PHOTO_STORE)
+            .add({
+              name: file.name,
+              data: reader.result
+            });
+
+
+          transaction.oncomplete =
+            resolve;
+
+          transaction.onerror =
+            () => reject(transaction.error);
+
+        };
+
+
+        reader.onerror =
+          () => reject(reader.error);
+
+
+        reader.readAsDataURL(file);
+
+      });
+
+    }
+
+
+    renderPhotos();
+  }
+
+
+  async function deletePhoto(id) {
+
+    const db =
+      await openPhotoDB();
+
+
+    const transaction =
+      db.transaction(
+        PHOTO_STORE,
+        "readwrite"
+      );
+
+
+    transaction
+      .objectStore(PHOTO_STORE)
+      .delete(id);
+
+
+    transaction.oncomplete =
+      renderPhotos;
+  }
+
+
+  async function clearPhotos() {
+
+    if (!confirm("Xóa toàn bộ ảnh đã chọn?")) {
+      return;
+    }
+
+
+    const db =
+      await openPhotoDB();
+
+
+    const transaction =
+      db.transaction(
+        PHOTO_STORE,
+        "readwrite"
+      );
+
+
+    transaction
+      .objectStore(PHOTO_STORE)
+      .clear();
+
+
+    transaction.oncomplete =
+      renderPhotos;
+  }
+
+
+  async function renderPhotos() {
+
+    if (!photoGallery) {
+      return;
+    }
+
+
+    const photos =
+      await getPhotos();
+
+
+    if (!photos.length) {
+
+      photoGallery.innerHTML =
+        photoTitles.map((title, index) => {
+
+          return `
+            <div class="photo ${index === 0 ? "big" : ""}">
+
+              <div>
+
+                <div class="placeholder-icon">
+                  ${title[0]}
+                </div>
+
+                <strong>
+                  ${title[1]}
+                </strong>
+
+                <small>
+                  ${title[2]}
+                </small>
+
+              </div>
+
+            </div>
+          `;
+
+        }).join("");
+
+      return;
+    }
+
+
+    photoGallery.innerHTML =
+      photos.map((photo, index) => {
+
+        return `
+          <div
+            class="photo has-image ${index === 0 ? "big" : ""}"
+            style="background-image:url('${photo.data}')">
+
+            <button
+              class="remove-photo"
+              onclick="deletePhoto(${photo.id})"
+              title="Xóa ảnh">
+              ×
+            </button>
+
+            <div>
+
+              <strong>
+                ${escapeHtml(
+                  photo.name || "Ảnh lớp"
+                )}
+              </strong>
+
+              <small>
+                Ảnh từ thiết bị
+              </small>
+
+            </div>
+
+          </div>
+        `;
+
+      }).join("");
+
+  }
+
+
+  if (photoPicker) {
+
+    photoPicker.onchange =
+      async function (event) {
+
+        if (event.target.files.length) {
+
+          await addPhotos(
+            [...event.target.files]
+          );
+
+        }
+
+        event.target.value = "";
+
+      };
+
+  }
+
+
+  if (clearPhotosBtn) {
+    clearPhotosBtn.onclick = clearPhotos;
+  }
+
+
+  window.deletePhoto =
+    deletePhoto;
+
+
+  renderPhotos();
+
+
+  /* =====================================================
+     PHẦN 3 — HIỆU ỨNG KHI CUỘN
+  ===================================================== */
+
+  setTimeout(() => {
+
+    const cards =
+      document.querySelectorAll(
+        ".stat,.member,.event-content,.photo,.card"
+      );
+
+
+    const observer =
+      new IntersectionObserver(
+        entries => {
+
+          entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+              entry.target.animate(
+                [
+                  {
+                    opacity: 0,
+                    transform: "translateY(18px)"
+                  },
+                  {
+                    opacity: 1,
+                    transform: "translateY(0)"
+                  }
+                ],
+                {
+                  duration: 550,
+                  easing: "cubic-bezier(.2,.7,.2,1)",
+                  fill: "forwards"
+                }
+              );
+
+
+              observer.unobserve(
+                entry.target
+              );
+
+            }
+
+          });
+
+        },
+        {
+          threshold: 0.12
+        }
+      );
+
+
+    cards.forEach(card => {
+      observer.observe(card);
+    });
+
+  }, 150);
+
+
+  /* =====================================================
+     PHẦN 4 — THÀNH VIÊN
+  ===================================================== */
+
+  const MEMBER_KEY =
+    "lop83_members";
+
+
+  const defaultMembers = [
+    {
+      name: "Nguyễn Văn A",
+      role: "Lớp trưởng"
+    },
+    {
+      name: "Trần Thị B",
+      role: "Lớp phó học tập"
+    },
+    {
+      name: "Lê Văn C",
+      role: "Lớp phó phong trào"
+    },
+    {
+      name: "Phạm Thị D",
+      role: "Tổ trưởng"
+    },
+    {
+      name: "Hoàng Văn E",
+      role: "Tổ trưởng"
+    },
+    {
+      name: "Thành viên 8/3",
+      role: "Luôn có mặt!"
+    }
+  ];
+
+
+  let members;
+
+
+  try {
+
+    const savedMembers =
+      JSON.parse(
+        localStorage.getItem(MEMBER_KEY)
+      );
+
+
+    members =
+      Array.isArray(savedMembers)
+        ? savedMembers
+        : defaultMembers;
+
+  } catch (error) {
+
+    members = defaultMembers;
+
+  }
+
+
+  let editingMember = -1;
+
+
+  const memberList =
+    document.getElementById("memberList");
+
+  const memberModal =
+    document.getElementById("memberModal");
+
+  const memberName =
+    document.getElementById("memberName");
+
+  const memberRole =
+    document.getElementById("memberRole");
+
+
+  function initials(name) {
+
+    const words =
+      name
+        .trim()
+        .split(/\s+/)
+        .filter(Boolean);
+
+
+    if (!words.length) {
+      return "8";
+    }
+
+
+    if (words.length > 1) {
+
+      return (
+        words[0][0] +
+        words[words.length - 1][0]
+      ).toUpperCase();
+
+    }
+
+
+    return words[0]
+      .slice(0, 2)
+      .toUpperCase();
+  }
+
+
+  function saveMembers() {
+
+    localStorage.setItem(
+      MEMBER_KEY,
+      JSON.stringify(members)
+    );
+
+  }
+
+
+  function renderMembers() {
+
+    if (!memberList) {
+      return;
+    }
+
+
+    if (!members.length) {
+
+      memberList.innerHTML = `
+        <div class="empty-state">
+          Chưa có thành viên nào.
+          Bấm “Thêm thành viên” để bắt đầu.
+        </div>
+      `;
+
+      return;
+    }
+
+
+    memberList.innerHTML =
+      members.map((member, index) => {
+
+        return `
+          <div class="member">
+
+            <div class="avatar">
+              ${escapeHtml(
+                initials(member.name)
+              )}
+            </div>
+
+            <div>
+
+              <h3>
+                ${escapeHtml(member.name)}
+              </h3>
+
+              <p>
+                ${escapeHtml(member.role)}
+              </p>
+
+            </div>
+
+            <div class="member-actions">
+
+              <button
+                class="edit"
+                onclick="editMember(${index})">
+                Sửa
+              </button>
+
+              <button
+                class="delete"
+                onclick="deleteMember(${index})">
+                Xóa
+              </button>
+
+            </div>
+
+          </div>
+        `;
+
+      }).join("");
+
+  }
+
+
+  function openMember(index = -1) {
+
+    editingMember = index;
+
+
+    document.getElementById(
+      "memberModalTitle"
+    ).textContent =
+      index < 0
+        ? "Thêm thành viên"
+        : "Sửa thành viên";
+
+
+    memberName.value =
+      index < 0
+        ? ""
+        : members[index].name;
+
+
+    memberRole.value =
+      index < 0
+        ? ""
+        : members[index].role;
+
+
+    memberModal.classList.add("open");
+
+
+    setTimeout(() => {
+
+      memberName.focus();
+
+    }, 50);
+
+  }
+
+
+  function closeMember() {
+
+    memberModal.classList.remove(
+      "open"
+    );
+
+  }
+
+
+  const addMemberBtn =
+    document.getElementById(
+      "addMemberBtn"
+    );
+
+
+  const cancelMemberBtn =
+    document.getElementById(
+      "cancelMemberBtn"
+    );
+
+
+  const saveMemberBtn =
+    document.getElementById(
+      "saveMemberBtn"
+    );
+
+
+  if (addMemberBtn) {
+
+    addMemberBtn.onclick =
+      () => openMember();
+
+  }
+
+
+  if (cancelMemberBtn) {
+
+    cancelMemberBtn.onclick =
+      closeMember;
+
+  }
+
+
+  if (saveMemberBtn) {
+
+    saveMemberBtn.onclick =
+      function () {
+
+        const name =
+          memberName.value.trim();
+
+
+        const role =
+          memberRole.value.trim() ||
+          "Thành viên";
+
+
+        if (!name) {
+
+          memberName.focus();
+
+          return;
+        }
+
+
+        if (editingMember < 0) {
+
+          members.push({
+            name: name,
+            role: role
+          });
+
+        } else {
+
+          members[editingMember] = {
+            name: name,
+            role: role
+          };
+
+        }
+
+
+        saveMembers();
+        renderMembers();
+        closeMember();
+
+      };
+
+  }
+
+
+  if (memberModal) {
+
+    memberModal.onclick =
+      function (event) {
+
+        if (
+          event.target === memberModal
+        ) {
+          closeMember();
+        }
+
+      };
+
+  }
+
+
+  window.editMember =
+    openMember;
+
+
+  window.deleteMember =
+    function (index) {
+
+      if (
+        !confirm(
+          `Xóa ${members[index].name}?`
+        )
+      ) {
+        return;
+      }
+
+
+      members.splice(index, 1);
+
+      saveMembers();
+      renderMembers();
+
+    };
+
+
+  renderMembers();
+
+
+  /* =====================================================
+     PHẦN 5 — PONADIRA AI
+  ===================================================== */
+
+  const aiFab =
+    document.getElementById("aiFab");
+
+  const aiPanel =
+    document.getElementById("aiPanel");
+
+  const aiClose =
+    document.getElementById("aiClose");
+
+  const aiMessages =
+    document.getElementById("aiMessages");
+
+  const aiForm =
+    document.getElementById("aiForm");
+
+  const aiInput =
+    document.getElementById("aiInput");
+
+
+  function aiAdd(
+    text,
+    type = "bot"
+  ) {
+
+    const message =
+      document.createElement("div");
+
+
+    message.className =
+      "ai-msg " + type;
+
+
+    message.textContent =
+      text;
+
+
+    aiMessages.appendChild(
+      message
+    );
+
+
+    aiMessages.scrollTop =
+      aiMessages.scrollHeight;
+
+  }
+
+
+  function getEventsForAI() {
+
+    try {
+
+      return JSON.parse(
+        localStorage.getItem(
+          "lop83_events"
+        ) || "[]"
+      );
+
+    } catch (error) {
+
+      return [];
+
+    }
+
+  }
+
+
+  function ponadira(question) {
+
+    const x =
+      question
+        .toLowerCase()
+        .trim();
+
+
+    /* Chào hỏi */
+
+    if (
+      /
